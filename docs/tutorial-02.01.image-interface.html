@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Tutorial: ImageInterface - Lens JS docs</title>
+    
+    
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-01.00.quick-start.html">Quick Start</a></li><li><a href="tutorial-02.00.basic-concepts.html">Basic concepts</a></li><li><a href="tutorial-03.00.distortions.html">Distortions</a></li></ul><h3>Interfaces</h3><ul><li><a href="DistortionInterface.html">DistortionInterface</a><ul class='methods'><li data-type='method'><a href="DistortionInterface.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="DistortionInterface.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="DistortionInterface.html#getValidity">getValidity</a></li><li data-type='method'><a href="DistortionInterface.html#reverseMap">reverseMap</a></li></ul></li><li><a href="FilterInterface.html">FilterInterface</a><ul class='methods'><li data-type='method'><a href="FilterInterface.html#filter">filter</a></li><li data-type='method'><a href="FilterInterface.html#getWeight">getWeight</a></li><li data-type='method'><a href="FilterInterface.html#window">window</a></li></ul></li><li><a href="ImageInterface.html">ImageInterface</a><ul class='methods'><li data-type='method'><a href="ImageInterface.html#getAverageColor">getAverageColor</a></li><li data-type='method'><a href="ImageInterface.html#getBlank">getBlank</a></li><li data-type='method'><a href="ImageInterface.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="ImageInterface.html#getPixelColor">getPixelColor</a></li><li data-type='method'><a href="ImageInterface.html#scale">scale</a></li><li data-type='method'><a href="ImageInterface.html#setPixelColor">setPixelColor</a></li><li data-type='method'><a href="ImageInterface.html#sync">sync</a></li></ul></li><li><a href="ResamplerInterface.html">ResamplerInterface</a><ul class='methods'><li data-type='method'><a href="ResamplerInterface.html#getResampledColor">getResampledColor</a></li><li data-type='method'><a href="ResamplerInterface.html#setImage">setImage</a></li><li data-type='method'><a href="ResamplerInterface.html#setMapper">setMapper</a></li></ul></li></ul><h3>Classes</h3><ul><li><a href="lens.distorter.ReversePixelMapping.html">lens.distorter.ReversePixelMapping</a><ul class='methods'><li data-type='method'><a href="lens.distorter.ReversePixelMapping.html#distort">distort</a></li><li data-type='method'><a href="lens.distorter.ReversePixelMapping.html#performDistortion">performDistortion</a></li><li data-type='method'><a href="lens.distorter.ReversePixelMapping.html#prepareViewport">prepareViewport</a></li></ul></li><li><a href="lens.distortion.Affine.html">lens.distortion.Affine</a><ul class='methods'><li data-type='method'><a href="lens.distortion.Affine.html#.fromControlPoints">fromControlPoints</a></li><li data-type='method'><a href="lens.distortion.Affine.html#.fromForwardMatrix">fromForwardMatrix</a></li><li data-type='method'><a href="lens.distortion.Affine.html#.invertAffineMatrix">invertAffineMatrix</a></li><li data-type='method'><a href="lens.distortion.Affine.html#forwardMap">forwardMap</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getValidity">getValidity</a></li><li data-type='method'><a href="lens.distortion.Affine.html#reverseMap">reverseMap</a></li></ul></li><li><a href="lens.distortion.Arc.html">lens.distortion.Arc</a><ul class='methods'><li data-type='method'><a href="lens.distortion.Arc.html#.fromArguments">fromArguments</a></li><li data-type='method'><a href="lens.distortion.Arc.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Arc.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="lens.distortion.Arc.html#getValidity">getValidity</a></li><li data-type='method'><a href="lens.distortion.Arc.html#reverseMap">reverseMap</a></li></ul></li><li><a href="lens.distortion.Perspective.html">lens.distortion.Perspective</a><ul class='methods'><li data-type='method'><a href="lens.distortion.Perspective.html#.fromControlPoints">fromControlPoints</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#.fromForwardMatrix">fromForwardMatrix</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#.invertPerspectiveMatrix">invertPerspectiveMatrix</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#forwardMap">forwardMap</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getValidity">getValidity</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#reverseMap">reverseMap</a></li></ul></li><li><a href="lens.exception.InvalidArgument.html">lens.exception.InvalidArgument</a></li><li><a href="lens.exception.InvalidArgumentsLength.html">lens.exception.InvalidArgumentsLength</a></li><li><a href="lens.exception.LensException.html">lens.exception.LensException</a></li><li><a href="lens.exception.UnsolvableMatrix.html">lens.exception.UnsolvableMatrix</a></li><li><a href="lens.filter.Filter.html">lens.filter.Filter</a><ul class='methods'><li data-type='method'><a href="lens.filter.Filter.html#filter">filter</a></li><li data-type='method'><a href="lens.filter.Filter.html#getWeight">getWeight</a></li><li data-type='method'><a href="lens.filter.Filter.html#window">window</a></li></ul></li><li><a href="lens.image.AbstractImage.html">lens.image.AbstractImage</a><ul class='methods'><li data-type='method'><a href="lens.image.AbstractImage.html#getAverageColor">getAverageColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getBlank">getBlank</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getImagePixelColor">getImagePixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getPixelColor">getPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getVirtualPixelColor">getVirtualPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getVirtualPixelColor">getVirtualPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#prepareBlank">prepareBlank</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#resize">resize</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#scale">scale</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#setImagePixelColor">setImagePixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#setPixelColor">setPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#sync">sync</a></li></ul></li><li><a href="lens.image.Canvas.html">lens.image.Canvas</a><ul class='methods'><li data-type='method'><a href="lens.image.Canvas.html#getAverageColor">getAverageColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#getImagePixelColor">getImagePixelColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#getVirtualPixelColor">getVirtualPixelColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#prepareBlank">prepareBlank</a></li><li data-type='method'><a href="lens.image.Canvas.html#resize">resize</a></li><li data-type='method'><a href="lens.image.Canvas.html#setImagePixelColor">setImagePixelColor</a></li></ul></li><li><a href="lens.image.DomImage.html">lens.image.DomImage</a><ul class='methods'><li data-type='method'><a href="lens.image.DomImage.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.DomImage.html#getVirtualPixelColor">getVirtualPixelColor</a></li></ul></li><li><a href="lens.resampler.EWA.html">lens.resampler.EWA</a><ul class='methods'><li data-type='method'><a href="lens.resampler.EWA.html#getResampledColor">getResampledColor</a></li><li data-type='method'><a href="lens.resampler.EWA.html#setImage">setImage</a></li><li data-type='method'><a href="lens.resampler.EWA.html#setMapper">setMapper</a></li></ul></li><li><a href="lens.resampler.Point.html">lens.resampler.Point</a><ul class='methods'><li data-type='method'><a href="lens.resampler.Point.html#getResampledColor">getResampledColor</a></li><li data-type='method'><a href="lens.resampler.Point.html#setImage">setImage</a></li><li data-type='method'><a href="lens.resampler.Point.html#setMapper">setMapper</a></li></ul></li><li><a href="lens.util.gaussJordanElimination.LeastSquares.html">lens.util.gaussJordanElimination.LeastSquares</a><ul class='methods'><li data-type='method'><a href="lens.util.gaussJordanElimination.LeastSquares.html#addTerms">addTerms</a></li></ul></li><li><a href="lens.util.gaussJordanElimination.Solver.html">lens.util.gaussJordanElimination.Solver</a><ul class='methods'><li data-type='method'><a href="lens.util.gaussJordanElimination.Solver.html#getVectors">getVectors</a></li><li data-type='method'><a href="lens.util.gaussJordanElimination.Solver.html#solve">solve</a></li><li data-type='method'><a href="lens.util.gaussJordanElimination.Solver.html#validate">validate</a></li></ul></li><li><a href="lens.Viewport.html">lens.Viewport</a><ul class='methods'><li data-type='method'><a href="lens.Viewport.html#area">area</a></li><li data-type='method'><a href="lens.Viewport.html#clone">clone</a></li><li data-type='method'><a href="lens.Viewport.html#contains">contains</a></li><li data-type='method'><a href="lens.Viewport.html#expand">expand</a></li><li data-type='method'><a href="lens.Viewport.html#fixBounds">fixBounds</a></li><li data-type='method'><a href="lens.Viewport.html#height">height</a></li><li data-type='method'><a href="lens.Viewport.html#reset">reset</a></li><li data-type='method'><a href="lens.Viewport.html#scale">scale</a></li><li data-type='method'><a href="lens.Viewport.html#width">width</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="lens.html">lens</a><ul class='methods'><li data-type='method'><a href="lens.html#.distort">distort</a></li><li data-type='method'><a href="lens.html#.registerDistortionResolver">registerDistortionResolver</a></li><li data-type='method'><a href="lens.html#.unregisterDistortionResolver">unregisterDistortionResolver</a></li></ul></li><li><a href="lens.distorter.html">lens.distorter</a></li><li><a href="lens.distortion.html">lens.distortion</a></li><li><a href="lens.exception.html">lens.exception</a></li><li><a href="lens.filter.html">lens.filter</a></li><li><a href="lens.filter.filterFunctions.html">lens.filter.filterFunctions</a></li><li><a href="lens.image.html">lens.image</a></li><li><a href="lens.mixins.html">lens.mixins</a></li><li><a href="lens.resampler.html">lens.resampler</a></li><li><a href="lens.util.html">lens.util</a><ul class='methods'><li data-type='method'><a href="lens.util.html#.blendColors">blendColors</a></li><li data-type='method'><a href="lens.util.html#.deg2rad">deg2rad</a></li><li data-type='method'><a href="lens.util.html#.perceptibleReciprocal">perceptibleReciprocal</a></li><li data-type='method'><a href="lens.util.html#.rad2deg">rad2deg</a></li></ul></li><li><a href="lens.util.gaussJordanElimination.html">lens.util.gaussJordanElimination</a></li></ul><h3>Mixins</h3><ul><li><a href="lens.mixins.createsBestFitViewportFromApexes.html">lens.mixins.createsBestFitViewportFromApexes</a><ul class='methods'><li data-type='method'><a href="lens.mixins.createsBestFitViewportFromApexes.html#.getBestFitViewport">getBestFitViewport</a></li></ul></li><li><a href="lens.mixins.interpolationTrait.html">lens.mixins.interpolationTrait</a><ul class='methods'><li data-type='method'><a href="lens.mixins.interpolationTrait.html#.getInterpolatedPixelColor">getInterpolatedPixelColor</a></li></ul></li><li><a href="lens.mixins.virtualPixelTrait.html">lens.mixins.virtualPixelTrait</a><ul class='methods'><li data-type='method'><a href="lens.mixins.virtualPixelTrait.html#.getVirtualPixelColor">getVirtualPixelColor</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#Color">Color</a></li><li><a href="global.html#DistortionOptions">DistortionOptions</a></li><li><a href="global.html#Point">Point</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Tutorial: ImageInterface</h1>
+    
+
+    <section>
+
+<header>
+    
+
+    <h2>ImageInterface</h2>
+</header>
+
+<article>
+    <p><a href="ImageInterface.html">ImageInterface</a> is a base contract to produce image distortion.</p>
+<p>Lens has built-in classes that implement ImageInterface for usage in browsers, but if
+you want to use Lens in Node.js, you should make adapter for image processing library
+that you use (see below).</p>
+<h3>ImageInterface implementations for browser</h3>
+<h4><a href="lens.image.Canvas.html">lens.image.Canvas</a></h4>
+<p>This class is used to distort image from HTML5 canvas directly. Distortion result will contain
+<strong>new</strong> canvas in it's <code>canvas</code> prop.</p>
+<pre class="prettyprint source lang-javascript"><code>var canvas  = document.querySelector('#canvas');
+var image   = new lens.image.Canvas(canvas);
+
+// Rotate by 180 deg using Affine distortion.
+var distorted = lens.distort(
+  image,
+  lens.distorts.AFFINE,
+  [0, 0, image.width - 1, image.height - 1, image.width - 1, image.height - 1, 0, 0],
+  {
+    async: false
+  }
+);
+
+// Put image data on canvas.
+canvas.getContext('2d').putImageData(
+  distorted.data, // ImageData object
+  0, 0
+);
+
+// ...or draw
+canvas.getContext('2d').drawImage(distorted.canvas, 0, 0);
+
+// ...or append new canvas to document
+document.body.appendChild(distorted.canvas);
+</code></pre>
+<h4><a href="lens.image.DomImage.html">lens.image.DomImage</a></h4>
+<p>This class extends <a href="lens.image.Canvas.html">lens.image.Canvas</a> and allows to distort <code>&lt;img&gt;</code> elements
+directly. New dom <code>Image</code> object (<code>&lt;img&gt;</code> element) will be in <code>image</code> property of
+distortion result. <code>canvas</code> property is still available, so you can use it too.</p>
+<p>Keep in mind that <code>lens.image.DomImage#sync()</code> method, which is used internally, returns
+promise, so <a href="lens.html#.distort">lens.distort</a> will also always return <code>Promise</code> regardless of
+<code><a href="global.html#DistortionOptions">DistortionOptions</a>#async</code> option.</p>
+<pre class="prettyprint source lang-javascript"><code>function preload(src) {
+  return new Promise(resolve => {
+    var img = new Image();
+    img.onload = () => resolve(img);
+    img.src = src;
+  });
+};
+
+preload(document.querySelector('#myImage').src)
+.then(img => {
+  var image = new lens.image.DomImage(img);
+  
+  return lens.distort(
+    image,
+    lens.distorts.AFFINE,
+    [0, 0, image.width - 1, image.height - 1, image.width - 1, image.height - 1, 0, 0]
+  );
+})
+.then(distorted => document.body.appendChild(distorted.image));
+</code></pre>
+<h3>Implementing ImageInterface in Node.js</h3>
+<p>Lens has abstract class <a href="lens.image.AbstractImage.html">lens.image.AbstractImage</a>. You can extend it and override
+only a few methods to make Lens work with image processing library that you use:</p>
+<pre class="prettyprint source lang-javascript"><code>var lens  = require('@alxcube/lens');
+
+class MyImage extends lens.image.AbstractImage {
+  constructor(image) {
+    super(image.width, image.height);
+    this.image  = image;
+    // Your code
+  }
+  
+  getImagePixelColor(x, y){
+    // Your code
+  }
+  
+  setImagePixelColor(x, y, color) {
+    // Your code
+  }
+  
+  prepareBlank(width, height){
+    // Your code
+  }
+  
+  getAverageColor() {
+    // Your code
+  }
+  
+  resize(width, height) {
+    // Your code
+  }
+  
+  sync() {
+    // Your code
+  }
+}
+</code></pre>
+<h4><code>constructor</code></h4>
+<p>In constructor you should call parent constructor with your image's width and height
+as arguments.</p>
+<p>Then you can store image at some property — then you can get distorted image from
+that property of distortion result.</p>
+<p>Also you can set <code><a href="ImageInterface.html">ImageInterface</a>#quantumRange</code> property here, if your image
+processing library supports different color depths. This is 255 by default.</p>
+<p>If you wish, you can override other default properties such as <code>backgroundColor</code>,
+<code>interpolationMethod</code> or <code>virtualPixelMethod</code></p>
+<h4><code><a href="lens.image.AbstractImage.html#getImagePixelColor">lens.image.AbstractImage#getImagePixelColor</a></code></h4>
+<p>In this method you must return pixel color at given image coords (x, y). This method
+is protected and is only called internally, so you don't need to check if (x, y) is
+in image bounds — just return <a href="global.html#Color">Color</a>.</p>
+<h4><code><a href="lens.image.AbstractImage.html#setImagePixelColor">lens.image.AbstractImage#setImagePixelColor</a></code></h4>
+<p>In this methos you must set pixel located at (x, y) to the given <a href="global.html#Color">Color</a>.
+You don't need to check if (x, y) is in image bounds.</p>
+<h4><code><a href="lens.image.AbstractImage.html#prepareBlank">lens.image.AbstractImage#prepareBlank</a></code></h4>
+<p>In this method you must return new instance of your class (or <code>Promise</code> that resolves
+such instance) with empty image of given width and height. This will be the 'canvas'
+on which distorted image will be drawn.</p>
+<p><em>If this method returns a <code>Promise</code> — <a href="lens.html#.distort">lens.distort</a> will also return promise,
+regardless of <code>async</code> option.</em></p>
+<h4><code><a href="lens.image.AbstractImage.html#getAverageColor">lens.image.AbstractImage#getAverageColor</a></code></h4>
+<p>This method must return average color of whole image. Basically, resizing source image
+to 1x1 px and returning color of that pixel is enough. If you can't resize image
+synchronously with your image processing library, you may compute it before creating
+class instance, and then save calculated color in constructor.</p>
+<h4><code><a href="lens.image.AbstractImage.html#resize">lens.image.AbstractImage#resize</a></code></h4>
+<p>This method must return new instance of your class with image, resized to given width
+and height. Alternatively, you can return <code>Promise</code> that resolves new instance.</p>
+<p><em>If this method returns a <code>Promise</code> — <a href="lens.html#.distort">lens.distort</a> will also return promise,
+regardless of <code>async</code> option.</em></p>
+<h4><a href="ImageInterface.html#sync">ImageInterface#sync</a></h4>
+<p>You must implement this method if you use some separate storage for pixel data manipulation
+(an array or something like that) so that to display processing result you must put
+that data to image object in a special way. You can refer to
+lens.image.Canvas#sync source for better understanding.</p>
+<p>If you implement this method, it must return either instance object itself (be chainable)
+or a <code>Promise</code> that resolves this instance.</p>
+<p><em>If this method returns a <code>Promise</code> — <a href="lens.html#.distort">lens.distort</a> will also return promise,
+regardless of <code>async</code> option.</em></p>
+<hr>
+<p>Navigate: ^ <a href="tutorial-02.00.basic-concepts.html">Basic concepts</a> | <a href="tutorial-02.02.reverse-pixel-mapping.html">Reverse Pixel Mapping</a> &gt;</p>
+</article>
+
+</section>
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Feb 04 2020 20:25:42 GMT+0200 (GMT+02:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

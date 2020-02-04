@@ -1,0 +1,81 @@
+<script src="lens.min.js"></script>
+<script src="js/common.js"></script>
+
+<p>
+    Let's make 3d box from these source images: <br>
+    <img src="img/perspective/merlot-side.png" alt="" id="side">
+    <img src="img/perspective/merlot-front.png" alt="" id="front">
+    <br>
+    See page source code.
+</p>
+
+<div id="result">Result: <br></div>
+
+<script>
+    // Preload images
+    var sidePromise = preloadImage(document.getElementById('side').src);
+    var frontPromise = preloadImage(document.getElementById('front').src);
+
+    // Prepare canvas for result
+    var canvas = document.createElement('canvas');
+    canvas.width = 336;
+    canvas.height = 350;
+    document.getElementById('result').appendChild(canvas);
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    Promise.all([sidePromise, frontPromise]).then(function (imgs) {
+      var sideImage = new lens.image.DomImage(imgs[0]);
+      var frontImage = new lens.image.DomImage(imgs[1]);
+
+      // Map side image corners to their new locations at result image
+      var sideCPs = [
+        sideImage.viewport.x1, sideImage.viewport.y1, 46, 57,
+        sideImage.viewport.x2, sideImage.viewport.y1, 119, 12,
+        sideImage.viewport.x2, sideImage.viewport.y2, 119, 338,
+        sideImage.viewport.x1, sideImage.viewport.y2, 46, 311
+      ];
+
+      // Do the same for front control points
+      var frontCPs = [
+        frontImage.viewport.x1, frontImage.viewport.y1, 119, 12,
+        frontImage.viewport.x2, frontImage.viewport.y1, 287, 67,
+        frontImage.viewport.x2, frontImage.viewport.y2, 287, 301,
+        frontImage.viewport.x1, frontImage.viewport.y2, 119, 338
+      ];
+      
+      var distortion = lens.distorts.PERSPECTIVE;
+      var options = {
+        async: true,
+        bestFit: true
+      };
+      
+      // Perform distortions
+      return Promise.all([
+        lens.distort(sideImage, distortion, sideCPs, options),
+        lens.distort(frontImage,distortion, frontCPs, options)
+      ]);
+    }).then(function (distorted) {
+      var distortedSide = distorted[0];
+      var distortedFront = distorted[1];
+
+      // Since we used `bestFit` option, virtual viewports of distorted images contain correct position for result image
+      ctx.drawImage(
+        distortedSide.canvas, 0, 0,
+        distortedSide.width, distortedSide.height,
+        distortedSide.viewport.x1, distortedSide.viewport.y1,
+        distortedSide.viewport.width(), distortedSide.viewport.height()
+      );
+
+      ctx.drawImage(
+        distortedFront.canvas, 0, 0,
+        distortedFront.width, distortedFront.height,
+        distortedFront.viewport.x1, distortedFront.viewport.y1,
+        distortedFront.viewport.width(), distortedFront.viewport.height()
+      );
+    });
+</script>
+
+^ {@tutorial 03.02.perspective}
+

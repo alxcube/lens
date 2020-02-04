@@ -1,0 +1,64 @@
+1. Lens copyright:
+
+Copyright 2020 Aleksandr Aleksandrov <alxcube@gmail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+2. ImageMagick copyright:
+
+Copyright 1999-2020 ImageMagick Studio LLC, a non-profit organization dedicated
+to making software imaging solutions freely available.
+
+You may not use this file except in compliance with the License. You may obtain
+a copy of the License at
+
+  https://imagemagick.org/script/license.php
+
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations under the License.
+
+The full text of this license is availaible in the LICENSE file.
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+3. E. I. du Pont de Nemours and Company copyright (ImageMagick was originally
+   developed and distributed by E. I. du Pont de Nemours and Company):
+
+Copyright 1999 E. I. du Pont de Nemours and Company
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files ("ImageMagick"), to deal in
+ImageMagick without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of ImageMagick, and to permit persons to whom the ImageMagick is furnished to
+do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of ImageMagick.
+
+The software is provided "as is", without warranty of any kind, express or
+implied, including but not limited to the warranties of merchantability,
+fitness for a particular purpose and noninfringement.  In no event shall E. I.
+du Pont de Nemours and Company be liable for any claim, damages or other
+liability, whether in an action of contract, tort or otherwise, arising from,
+out of or in connection with ImageMagick or the use or other dealings in
+ImageMagick.
+
+Except as contained in this notice, the name of the E. I. du Pont de Nemours
+and Company shall not be used in advertising or otherwise to promote the sale,
+use or other dealings in ImageMagick without prior written authorization from
+the E. I. du Pont de Nemours and Company.

@@ -1,0 +1,206 @@
+<script src="lens.min.js"></script>
+<script src="js/common.js"></script>
+
+<p>
+    <em>See <a href="https://en.wikipedia.org/wiki/Perspective_control">Perspective control</a> at Wikipedia</em>
+</p>
+
+<p>
+    With Lens you can correct perspective distortion of objects on photo.
+</p>
+
+<p>Look at this photo of art object:</p>
+
+<img src="img/perspective/fall.jpg" alt="" id="falling" style="display: block;">
+
+<script>
+  /* ++++++++++++++++++++++++++++++++++++++++++++++++++++
+   *
+   * Preload image
+   *
+   * ++++++++++++++++++++++++++++++++++++++++++++++++++++
+   */
+  var fallingPromise  = preloadImage(document.getElementById('falling').src);
+</script>
+
+<p>It looks like sculpture is 'falling':</p>
+
+<div id="falling_align"></div>
+
+<script>
+    /* ++++++++++++++++++++++++++++++++++++++++++++++++++++
+     *
+     * Draw vertical lines to visualize 'falling' effect
+     *
+     * ++++++++++++++++++++++++++++++++++++++++++++++++++++
+     */
+    fallingPromise.then(function (img) {
+      var canvas    = makeCanvasImage(img);
+      var ctx       = canvas.getContext('2d');
+      ctx.strokeStyle   = '#0f0';
+      ctx.beginPath();
+      ctx.moveTo(97, 0);
+      ctx.lineTo(97, canvas.height - 1);
+      ctx.moveTo(275, 0);
+      ctx.lineTo(275, canvas.height - 1);
+      ctx.closePath();
+      ctx.stroke();
+
+      var image     = new Image(canvas.width, canvas.height);
+      document.getElementById('falling_align').appendChild(image);
+      image.src     = canvas.toDataURL();
+
+    });
+</script>
+
+<p>
+    Let's correct this with {@tutorial 03.02.perspective}. I've marked control points that we will use. Magenta points
+    (1, 2) are staying still. And points 3 and 4 are moving from their original position (green) to the new position
+    (red).
+</p>
+
+<div id="falling_marked"></div>
+
+
+<script>
+    /* ++++++++++++++++++++++++++++++++++++++++++++++++++++
+     *
+     * Visualize control points
+     *
+     * ++++++++++++++++++++++++++++++++++++++++++++++++++++
+     */
+
+    fallingPromise.then(function (img) {
+      // Desaturate image to see points better
+      var desaturated = desaturate(makeCanvasImage(img));
+
+      // Magenta points are control points that won't move. Green points will move to red points positions.
+      var pointGroups = [{
+        color: '#f0f',
+        points: [[97, 236], [275, 255]]
+      }, {
+        color: '#0f0',
+        points: [[95, 432], [282, 397]]
+      }, {
+        color: '#f00',
+        points: [[97, 432], [275, 397]]
+      }];
+
+      var ctx = desaturated.getContext('2d');
+      ctx.font = '18px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+
+      var pcounter = 0;
+
+      pointGroups.forEach(function (group, index) {
+        ctx.fillStyle = group.color;
+        ctx.beginPath();
+        group.points.forEach(function (point) {
+          ctx.ellipse(point[0], point[1], 1.5, 1.5, 0, 0, Math.PI * 2);
+        });
+        ctx.closePath();
+
+        ctx.fill();
+
+        if (index < 2) {
+          group.points.forEach(function (point) {
+            var text = ++pcounter + '.';
+            ctx.fillStyle = '#000';
+            ctx.fillText(text, point[0], point[1] - 5);
+            ctx.fillStyle = '#fff';
+            ctx.fillText(text, point[0] - 1, point[1] - 6);
+          });
+        }
+      });
+
+      var image     = new Image(desaturated.width, desaturated.height);
+      document.getElementById('falling_marked').appendChild(image);
+      image.src     = desaturated.toDataURL();
+    });
+</script>
+
+<p>
+    Let's apply that perspective transform and see what we will get (see the source code of the page).
+</p>
+
+<div id="falling_distorted"></div>
+
+<script>
+    /* ++++++++++++++++++++++++++++++++++++++++++++++++++++
+     *
+     * Correct image perspective
+     *
+     * ++++++++++++++++++++++++++++++++++++++++++++++++++++
+     */
+
+    // Control points of perspective distortion as on 'img/perspective/fall_marked.jpg' above.
+    var controlPoints   = [
+      97, 236, 97, 236,     // We are not moving
+      275, 255, 275, 255,   // these two points.
+      95, 432, 97, 432,     // Move (95, 432) to (97, 432).
+      282, 397, 275, 397    // Move (282, 397) to (275, 397).
+    ];
+
+    fallingPromise.then(function (img) {
+      var image = new lens.image.DomImage(img);
+
+      // Perform distortion
+      return lens.distort(image, lens.distorts.PERSPECTIVE, controlPoints);
+    }).then(function (distorted) {
+      // Insert distorted image into document.
+      document.getElementById('falling_distorted').appendChild(distorted.image);
+    });
+</script>
+
+<p>
+    As you can see, there's no more falling effect, but some empty area appeared. And you may not noticed it, but part
+    of image at the top was cropped. If you look at the source code of this example, I will show you how you can
+    calculate viewport for this distortion so that distorted image will already be cropped properly.
+</p>
+
+<div id="falling_distorted_cropped"></div>
+
+<script>
+  /* ++++++++++++++++++++++++++++++++++++++++++++++++++++
+   *
+   * Correct image perspective with proper crop
+   *
+   * ++++++++++++++++++++++++++++++++++++++++++++++++++++
+   */
+
+    fallingPromise.then(function (img) {
+      var image = new lens.image.DomImage(img);
+
+      // Create Perspective distortion class instance from control points set above
+      var perspective     = lens.distortion.Perspective.fromControlPoints(controlPoints);
+
+      // Forward map image corners to find their new locations.
+      var   topLeft     = perspective.forwardMap(0, 0),
+            topRight    = perspective.forwardMap(image.width - 1, 0),
+            bottomLeft  = perspective.forwardMap(0, image.height - 1),
+            bottomRight = perspective.forwardMap(image.width - 1, image.height - 1);
+
+      /*
+       * Use inner orthogonal rectangle of quadrilateral defined by forward mapped points as cropped viewport.
+       * This is NOT UNIVERSAL WAY, but we can use it in this simple demo.
+       * If you want universal solution, have a look at this algorithm:
+       * http://cgm.cs.mcgill.ca/~athens/cs507/Projects/2003/DanielSud/
+       */
+      var viewport      = new lens.Viewport(
+        Math.max(topLeft[0], bottomLeft[0]), Math.max(topLeft[1], topRight[1]),
+        Math.min(topRight[0], bottomRight[0]), Math.min(bottomRight[1], bottomLeft[1])
+      );
+
+      // Perform distortion
+      return lens.distort(image, lens.distorts.PERSPECTIVE, controlPoints, {
+        // Set output image viewport
+        viewport: viewport
+      });
+    }).then(function (distorted) {
+      // Insert distorted image into document.
+      document.getElementById('falling_distorted_cropped').appendChild(distorted.image);
+    });
+</script>
+
+^ {@tutorial 03.02.perspective}

@@ -1,0 +1,65 @@
+<script src="lens.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+  // Preload image
+  var testTablePromise    = preloadImage('img/affine/test-table.jpg');
+</script>
+
+<p><em>See page source for examples code</em></p>
+
+<p>This is the source image we will distort:</p>
+
+<div id="source"></div>
+
+<script>
+  testTablePromise.then(function (img) {
+    document.querySelector('#source').appendChild(img);
+  });
+</script>
+
+<p>
+    Apply affine distortion with 3 control points (apply scaling, rotation, translation and shearing):
+</p>
+
+<div id="affine_2"></div>
+
+<script>
+  testTablePromise.then(function (img) {
+    var image = new lens.image.DomImage(img);
+    image.backgroundColor = [255, 255, 0, 255]; // yellow
+    image.virtualPixelMethod = lens.vpx.BACKGROUND;
+
+    return lens.distort(
+      image,
+      lens.distorts.AFFINE,
+      [0, 0, 80, 50, 100, 0, 125, 80, 0, 100, 70, 100]
+    );
+  }).then(function (distorted) {
+    document.querySelector('#affine_2').appendChild(distorted.image);
+  });
+</script>
+
+<p>I set virtual pixels to yellow color for better understanding output image size.</p>
+
+<p>And now apply the same transform, but with bestFit option:</p>
+
+<div id="affine_2_bestFit"></div>
+
+<script>
+  testTablePromise.then(function (img) {
+    var image = new lens.image.DomImage(img);
+    image.backgroundColor = [255, 255, 0, 255]; // yellow
+    image.virtualPixelMethod = lens.vpx.BACKGROUND;
+
+    return lens.distort(
+      image,
+      lens.distorts.AFFINE,
+      [0, 0, 80, 50, 100, 0, 125, 80, 0, 100, 70, 100],
+      {bestFit: true}
+    );
+  }).then(function (distorted) {
+    document.querySelector('#affine_2_bestFit').appendChild(distorted.image);
+  });
+</script>
+
+^ {@tutorial 03.01.affine}
