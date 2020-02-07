@@ -1,42 +1,62 @@
 # Lens
 
-Lens is a standalone library for performing image distortions using
-[reverse pixel mapping](https://www.imagemagick.org/Usage/distorts/#mapping)
-with algorithms taken from [ImageMagick](https://imagemagick.org) core.
-Following distortions are supported at the moment:
+## Introduction
 
-* Affine (using control points or affine matrix)
-* Perspective (using control points or perspective matrix)
+Lens is pure javascript library for image distortions using algorithms taken from [ImageMagick](https://imagemagick.org).
 
-Lens can distort images in browser and in Node.js, but only browsers are supported
-out of the box. If you want to use Lens in Node.js, you should implement ImageInterface
-using your favorite image processing library — it's easy. (TODO: provide link to example of implementation) 
+It can be uses in all browsers that support HTML5 canvas and in Node.js. While browsers usage supported out of the box,
+you will need some third party library that provides pixel manipulation to use Lens in Node.
 
-## Installation
-### Using npm
-```
-npm i alxcube/lens
-```
-### Via `script` tag
+If you are familiar with ImageMagick distortions, it will be very easy for you to use Lens.
 
-```html
-<script src="path-to-lens/lens.min.js"></script>
-```
+## Features
 
-## Import
+* Distortions:
+    * Affine
+    * Perspective
+    * Arc
+* Area re-sampling:
+    * Elliptical Weighted Average re-sampling
+    * Super-sampling
+    * Interpolated color lookup
+* Re-sampling filters
+* Virtual Pixels support
 
-After Lens is installed, you can import it to your project:
+## Documentation
 
-### ES6 module
-```javascript
-import lens from 'alxcube/lens';
-```
+Detailed documentation is available [here](https://alxcube.github.io/lens/docs/index.html)
 
-### CommonJS module
-```javascript
-let lens =  require('alxcube/lens');
-```
+## Browser support
 
-### Global var
+Lens supports all browsers that support HTML5 canvas pixel manipulations using [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData)
+object. However, Lens uses some ES2015 features that you may need to polyfill:
+* Promise
+* Object.assign()
+* Array.fill()
+* Math.hypot()
 
-If you don't use modules, Lens is available in global namespace as `lens`
+There also may be some limitations on image size depending on browser.
+
+## Semver
+
+Lens have no tests specified at the moment, so it stays at version 0.
+Until it reaches a 1.0 release, breaking changes will be released with a new minor version.
+
+## Future work
+
+* Write tests
+* Implement other ImageMagick distortions:
+    * Bilinear (forward and reverse)
+    * Polynomial
+    * Polar
+    * DePolar
+    * Barrel
+    * BarrelInverse
+    * Cylinder To Plane
+    * Plane To Cylinder
+    * Shepards
+* Add more re-sample filter functions and filter presets
+* Add more interpolation methods
+* Add more virtual pixel methods
+* Implement image resizing using ImageMagick algorithms and filters
+    
