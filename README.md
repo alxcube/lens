@@ -15,9 +15,9 @@ If you are familiar with ImageMagick distortions, it will be very easy for you t
     * Affine
     * Perspective
     * Arc
-* Area re-sampling:
-    * Elliptical Weighted Average re-sampling
-    * Super-sampling
+* Resampling:
+    * Elliptical Weighted Average resampling
+    * Supersampling
     * Interpolated color lookup
 * Re-sampling filters
 * Virtual Pixels support
