@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Tutorial: Arc Distortion - Lens JS docs</title>
+    
+    <meta name="description" content="Pure javascript library for high quality image transforms like affine, perspective, arc using algorithms from ImageMagick and incorporates reverse pixel mapping technique and elliptical weighted average area re-sampling. Works in browsers and in Node.js." />
+    
+        <meta name="keywords" content="lens, javascript, image distortion, image transform, affine, perspective, arc image, reverse pixel mapping, elliptical weighted average, re-sampling, super-sampling" />
+        <meta name="keyword" content="lens, javascript, image distortion, image transform, affine, perspective, arc image, reverse pixel mapping, elliptical weighted average, re-sampling, super-sampling" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="../" target="_blank" class="menu-item" >Project Home</a></h2><h2><a href="../#/playground" target="_blank" class="menu-item" >Playground</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-01.00.quick-start.html">Quick Start</a></li><li><a href="tutorial-02.00.basic-concepts.html">Basic concepts</a></li><li><a href="tutorial-03.00.distortions.html">Distortions</a></li></ul><h3>Interfaces</h3><ul><li><a href="DistortionInterface.html">DistortionInterface</a><ul class='methods'><li data-type='method'><a href="DistortionInterface.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="DistortionInterface.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="DistortionInterface.html#getValidity">getValidity</a></li><li data-type='method'><a href="DistortionInterface.html#reverseMap">reverseMap</a></li></ul></li><li><a href="FilterInterface.html">FilterInterface</a><ul class='methods'><li data-type='method'><a href="FilterInterface.html#filter">filter</a></li><li data-type='method'><a href="FilterInterface.html#getWeight">getWeight</a></li><li data-type='method'><a href="FilterInterface.html#window">window</a></li></ul></li><li><a href="ImageInterface.html">ImageInterface</a><ul class='methods'><li data-type='method'><a href="ImageInterface.html#getAverageColor">getAverageColor</a></li><li data-type='method'><a href="ImageInterface.html#getBlank">getBlank</a></li><li data-type='method'><a href="ImageInterface.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="ImageInterface.html#getPixelColor">getPixelColor</a></li><li data-type='method'><a href="ImageInterface.html#scale">scale</a></li><li data-type='method'><a href="ImageInterface.html#setPixelColor">setPixelColor</a></li><li data-type='method'><a href="ImageInterface.html#sync">sync</a></li></ul></li><li><a href="ResamplerInterface.html">ResamplerInterface</a><ul class='methods'><li data-type='method'><a href="ResamplerInterface.html#getResampledColor">getResampledColor</a></li><li data-type='method'><a href="ResamplerInterface.html#setImage">setImage</a></li><li data-type='method'><a href="ResamplerInterface.html#setMapper">setMapper</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="lens.html">lens</a><ul class='methods'><li data-type='method'><a href="lens.html#.distort">distort</a></li><li data-type='method'><a href="lens.html#.distort2">distort</a></li><li data-type='method'><a href="lens.html#.registerDistortionResolver">registerDistortionResolver</a></li><li data-type='method'><a href="lens.html#.unregisterDistortionResolver">unregisterDistortionResolver</a></li></ul></li><li><a href="lens.distorter.html">lens.distorter</a></li><li><a href="lens.distortion.html">lens.distortion</a></li><li><a href="lens.exception.html">lens.exception</a></li><li><a href="lens.filter.html">lens.filter</a></li><li><a href="lens.filter.filterFunctions.html">lens.filter.filterFunctions</a></li><li><a href="lens.image.html">lens.image</a></li><li><a href="lens.mixins.html">lens.mixins</a></li><li><a href="lens.resampler.html">lens.resampler</a></li><li><a href="lens.util.html">lens.util</a><ul class='methods'><li data-type='method'><a href="lens.util.html#.blendColors">blendColors</a></li><li data-type='method'><a href="lens.util.html#.deg2rad">deg2rad</a></li><li data-type='method'><a href="lens.util.html#.perceptibleReciprocal">perceptibleReciprocal</a></li><li data-type='method'><a href="lens.util.html#.rad2deg">rad2deg</a></li></ul></li><li><a href="lens.util.gaussJordanElimination.html">lens.util.gaussJordanElimination</a></li></ul><h3>Classes</h3><ul><li><a href="lens.distorter.ReversePixelMapping.html">lens.distorter.ReversePixelMapping</a><ul class='methods'><li data-type='method'><a href="lens.distorter.ReversePixelMapping.html#distort">distort</a></li><li data-type='method'><a href="lens.distorter.ReversePixelMapping.html#performDistortion">performDistortion</a></li><li data-type='method'><a href="lens.distorter.ReversePixelMapping.html#prepareViewport">prepareViewport</a></li></ul></li><li><a href="lens.distortion.Affine.html">lens.distortion.Affine</a><ul class='methods'><li data-type='method'><a href="lens.distortion.Affine.html#.fromControlPoints">fromControlPoints</a></li><li data-type='method'><a href="lens.distortion.Affine.html#.fromForwardMatrix">fromForwardMatrix</a></li><li data-type='method'><a href="lens.distortion.Affine.html#.invertAffineMatrix">invertAffineMatrix</a></li><li data-type='method'><a href="lens.distortion.Affine.html#forwardMap">forwardMap</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getValidity">getValidity</a></li><li data-type='method'><a href="lens.distortion.Affine.html#reverseMap">reverseMap</a></li></ul></li><li><a href="lens.distortion.Arc.html">lens.distortion.Arc</a><ul class='methods'><li data-type='method'><a href="lens.distortion.Arc.html#.fromArguments">fromArguments</a></li><li data-type='method'><a href="lens.distortion.Arc.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Arc.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="lens.distortion.Arc.html#getValidity">getValidity</a></li><li data-type='method'><a href="lens.distortion.Arc.html#reverseMap">reverseMap</a></li></ul></li><li><a href="lens.distortion.Perspective.html">lens.distortion.Perspective</a><ul class='methods'><li data-type='method'><a href="lens.distortion.Perspective.html#.fromControlPoints">fromControlPoints</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#.fromForwardMatrix">fromForwardMatrix</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#.invertPerspectiveMatrix">invertPerspectiveMatrix</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#forwardMap">forwardMap</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getValidity">getValidity</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#reverseMap">reverseMap</a></li></ul></li><li><a href="lens.exception.InvalidArgument.html">lens.exception.InvalidArgument</a></li><li><a href="lens.exception.InvalidArgumentsLength.html">lens.exception.InvalidArgumentsLength</a></li><li><a href="lens.exception.LensException.html">lens.exception.LensException</a></li><li><a href="lens.exception.UnsolvableMatrix.html">lens.exception.UnsolvableMatrix</a></li><li><a href="lens.filter.Filter.html">lens.filter.Filter</a><ul class='methods'><li data-type='method'><a href="lens.filter.Filter.html#filter">filter</a></li><li data-type='method'><a href="lens.filter.Filter.html#getWeight">getWeight</a></li><li data-type='method'><a href="lens.filter.Filter.html#window">window</a></li></ul></li><li><a href="lens.image.AbstractImage.html">lens.image.AbstractImage</a><ul class='methods'><li data-type='method'><a href="lens.image.AbstractImage.html#getAverageColor">getAverageColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getBlank">getBlank</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getImagePixelColor">getImagePixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getPixelColor">getPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getVirtualPixelColor">getVirtualPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getVirtualPixelColor">getVirtualPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#prepareBlank">prepareBlank</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#resize">resize</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#scale">scale</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#setImagePixelColor">setImagePixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#setPixelColor">setPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#sync">sync</a></li></ul></li><li><a href="lens.image.Canvas.html">lens.image.Canvas</a><ul class='methods'><li data-type='method'><a href="lens.image.Canvas.html#getAverageColor">getAverageColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#getImagePixelColor">getImagePixelColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#getVirtualPixelColor">getVirtualPixelColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#prepareBlank">prepareBlank</a></li><li data-type='method'><a href="lens.image.Canvas.html#resize">resize</a></li><li data-type='method'><a href="lens.image.Canvas.html#setImagePixelColor">setImagePixelColor</a></li></ul></li><li><a href="lens.image.DomImage.html">lens.image.DomImage</a><ul class='methods'><li data-type='method'><a href="lens.image.DomImage.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.DomImage.html#getVirtualPixelColor">getVirtualPixelColor</a></li></ul></li><li><a href="lens.resampler.EWA.html">lens.resampler.EWA</a><ul class='methods'><li data-type='method'><a href="lens.resampler.EWA.html#getResampledColor">getResampledColor</a></li><li data-type='method'><a href="lens.resampler.EWA.html#setImage">setImage</a></li><li data-type='method'><a href="lens.resampler.EWA.html#setMapper">setMapper</a></li></ul></li><li><a href="lens.resampler.Point.html">lens.resampler.Point</a><ul class='methods'><li data-type='method'><a href="lens.resampler.Point.html#getResampledColor">getResampledColor</a></li><li data-type='method'><a href="lens.resampler.Point.html#setImage">setImage</a></li><li data-type='method'><a href="lens.resampler.Point.html#setMapper">setMapper</a></li></ul></li><li><a href="lens.util.gaussJordanElimination.LeastSquares.html">lens.util.gaussJordanElimination.LeastSquares</a><ul class='methods'><li data-type='method'><a href="lens.util.gaussJordanElimination.LeastSquares.html#addTerms">addTerms</a></li></ul></li><li><a href="lens.util.gaussJordanElimination.Solver.html">lens.util.gaussJordanElimination.Solver</a><ul class='methods'><li data-type='method'><a href="lens.util.gaussJordanElimination.Solver.html#getVectors">getVectors</a></li><li data-type='method'><a href="lens.util.gaussJordanElimination.Solver.html#solve">solve</a></li><li data-type='method'><a href="lens.util.gaussJordanElimination.Solver.html#validate">validate</a></li></ul></li><li><a href="lens.Viewport.html">lens.Viewport</a><ul class='methods'><li data-type='method'><a href="lens.Viewport.html#area">area</a></li><li data-type='method'><a href="lens.Viewport.html#clone">clone</a></li><li data-type='method'><a href="lens.Viewport.html#contains">contains</a></li><li data-type='method'><a href="lens.Viewport.html#expand">expand</a></li><li data-type='method'><a href="lens.Viewport.html#fixBounds">fixBounds</a></li><li data-type='method'><a href="lens.Viewport.html#height">height</a></li><li data-type='method'><a href="lens.Viewport.html#offset">offset</a></li><li data-type='method'><a href="lens.Viewport.html#reset">reset</a></li><li data-type='method'><a href="lens.Viewport.html#scale">scale</a></li><li data-type='method'><a href="lens.Viewport.html#width">width</a></li></ul></li></ul><h3>Mixins</h3><ul><li><a href="lens.mixins.createsBestFitViewportFromApexes.html">lens.mixins.createsBestFitViewportFromApexes</a><ul class='methods'><li data-type='method'><a href="lens.mixins.createsBestFitViewportFromApexes.html#.getBestFitViewport">getBestFitViewport</a></li></ul></li><li><a href="lens.mixins.interpolationTrait.html">lens.mixins.interpolationTrait</a><ul class='methods'><li data-type='method'><a href="lens.mixins.interpolationTrait.html#.getInterpolatedPixelColor">getInterpolatedPixelColor</a></li></ul></li><li><a href="lens.mixins.virtualPixelTrait.html">lens.mixins.virtualPixelTrait</a><ul class='methods'><li data-type='method'><a href="lens.mixins.virtualPixelTrait.html#.getVirtualPixelColor">getVirtualPixelColor</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#Color">Color</a></li><li><a href="global.html#DistortionOptions">DistortionOptions</a></li><li><a href="global.html#Point">Point</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Tutorial: Arc Distortion</h1>
+    
+
+    <section>
+
+<header>
+    
+    <ul>
+        <li><a href="tutorial-arc-radiation.html">Example: Draw Radiation Sign</a></li>
+    
+        <li><a href="tutorial-arc-text.html">Example: Arc Text</a></li>
+    </ul>
+    
+
+    <h2>Arc Distortion</h2>
+</header>
+
+<article>
+    <p><em>See <a href="https://www.imagemagick.org/Usage/distorts/#arc">Arc Distortion</a> at ImageMagick
+distortions guide for examples.</em></p>
+<p>Arc distortion curves image into arc or even into full circle.</p>
+<p>By default it will curve the given image into a perfectly circular arc over the angle
+given, and without other arguments it will try to preserve the scaling of both the
+horizontal center-line of the image, and the image's aspect ratio, as much as possible.</p>
+<p>To do this it takes up to four arguments:</p>
+<ul>
+<li>arc angle</li>
+<li>rotation angle</li>
+<li>outer radius</li>
+<li>inner radius</li>
+</ul>
+<p>However only the <strong>arc angle</strong> is required, the other arguments are optional, and can be
+added as needed, in the sequence given.</p>
+<p>Adding the second argument <strong>rotation angle</strong> allows you to rotate the output image
+around the circle.</p>
+<p>When no specific radius argument has been set, the Arc distortion method takes great
+pains to try to ensure the original images scale is preserved as much as possible.
+To do this the horizontal center line of the image is set to the 'ideal radius' for the
+width and the given <em>arc angle</em> of the source image.</p>
+<p>This means that if you arc the image over a larger <em>arc angle</em>, the radius of the
+center-line used will also shrink by the same factor. As such the radius of the
+center-line will be smaller and tighter.</p>
+<p>If you set large angle over which to arc the image, the bottom edge will hit the center
+of the distortion, and beyond, which results in the lower part of the source image
+disappearing into oblivion.</p>
+<p>The third argument <strong>outer radius</strong> will override the 'ideal' center line radius that
+is calculated, so that the top of the image will become a circle of the radius given.
+Actual output image will be 2px larger that <em>outer radius</em> * 2 to allow anti-aliasing.</p>
+<p>The image still remains the same aspect ratio, just scaled so as to fit the circle of
+the radius requested. Remember the radius can be floating point, but the center of an
+arc will always be aligned to a pixel 'corner', so the resulting image will still be
+an even number of pixels wide.</p>
+<p>If you provide the fourth <strong>inner radius</strong> argument, you can get complete control of
+the width of the ring, or its 'radial height'.</p>
+<p>This will distort the radial scaling of the image, and effectively separates the radial
+scaling from the 'arc width' or angle of the resulting image. In other words the
+original image aspect ratio will no longer be preserved.</p>
+<p>You can even force it to completely fill the inside of the circle, wrapping the bottom
+edge of the input image at the center, or 'pole' of the distortion.</p>
+<h5>Usage example</h5>
+<pre class="prettyprint source lang-javascript"><code>var arcAngle = 360,
+rotationAngle = 0,
+outerRadius = 100,
+innerRadius = 0;
+
+var distorted = lens.distort(
+  image,
+  lens.distorts.ARC,
+  [arcAngle, rotationAngle, outerRadius, innerRadius]
+);
+</code></pre>
+<h5>Note about viewport</h5>
+<p>Arc distortion forces generation of best fit viewport for resulting image regardless of
+<code><a href="global.html#DistortionOptions">DistortionOptions</a>#bestFit</code> option. But you can override it by providing custom
+viewport via <code><a href="global.html#DistortionOptions">DistortionOptions</a>#viewport</code> option.</p>
+<p>Also, arc center will be located at (0, 0), according to generated best fit virtual
+viewport. Corresponding real image point can be then found like so:</p>
+<pre class="prettyprint source lang-javascript"><code>var distorted = lens.distort(image, lens.distorts.ARC, args);
+
+// Find arc center at image real coords
+var x = -distorted.viewport.x1;
+var y = -distorted.viewport.y1;
+</code></pre>
+<p><em>See <a href="https://www.imagemagick.org/Usage/distorts/#arc_center">Arc Center Point Placement</a> at ImageMagick Arc distortion
+details</em>.</p>
+<h4>Arc into Full Circle Rings</h4>
+<p>Longer images will 'Arc' distort a lot better over very large angles. For example you
+can wrap long images (like text messages) into rings.</p>
+<p>If you want to distort image into full circle, <a href="lens.html#.vpx#.HORIZONTAL_TILE">lens.vpx.HORIZONTAL_TILE</a> virtual
+pixel method is recommended to use in order to hide small gap between edges.</p>
+<hr>
+<h5>Links</h5>
+<ul>
+<li><a href="https://www.imagemagick.org/Usage/distorts/#arc">Arc Distortion details</a> at ImageMagick
+docs.</li>
+</ul>
+<hr>
+<p>Navigate: &lt; <a href="tutorial-03.02.perspective.html">Perspective Distortion</a> | ^ <a href="tutorial-03.00.distortions.html">Distortions</a></p>
+</article>
+
+</section>
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Feb 20 2020 03:43:19 GMT+0200 (GMT+02:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

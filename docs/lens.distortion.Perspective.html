@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Perspective - Lens JS docs</title>
+    
+    <meta name="description" content="Pure javascript library for high quality image transforms like affine, perspective, arc using algorithms from ImageMagick and incorporates reverse pixel mapping technique and elliptical weighted average area re-sampling. Works in browsers and in Node.js." />
+    
+        <meta name="keywords" content="lens, javascript, image distortion, image transform, affine, perspective, arc image, reverse pixel mapping, elliptical weighted average, re-sampling, super-sampling" />
+        <meta name="keyword" content="lens, javascript, image distortion, image transform, affine, perspective, arc image, reverse pixel mapping, elliptical weighted average, re-sampling, super-sampling" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="../" target="_blank" class="menu-item" >Project Home</a></h2><h2><a href="../#/playground" target="_blank" class="menu-item" >Playground</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-01.00.quick-start.html">Quick Start</a></li><li><a href="tutorial-02.00.basic-concepts.html">Basic concepts</a></li><li><a href="tutorial-03.00.distortions.html">Distortions</a></li></ul><h3>Interfaces</h3><ul><li><a href="DistortionInterface.html">DistortionInterface</a><ul class='methods'><li data-type='method'><a href="DistortionInterface.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="DistortionInterface.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="DistortionInterface.html#getValidity">getValidity</a></li><li data-type='method'><a href="DistortionInterface.html#reverseMap">reverseMap</a></li></ul></li><li><a href="FilterInterface.html">FilterInterface</a><ul class='methods'><li data-type='method'><a href="FilterInterface.html#filter">filter</a></li><li data-type='method'><a href="FilterInterface.html#getWeight">getWeight</a></li><li data-type='method'><a href="FilterInterface.html#window">window</a></li></ul></li><li><a href="ImageInterface.html">ImageInterface</a><ul class='methods'><li data-type='method'><a href="ImageInterface.html#getAverageColor">getAverageColor</a></li><li data-type='method'><a href="ImageInterface.html#getBlank">getBlank</a></li><li data-type='method'><a href="ImageInterface.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="ImageInterface.html#getPixelColor">getPixelColor</a></li><li data-type='method'><a href="ImageInterface.html#scale">scale</a></li><li data-type='method'><a href="ImageInterface.html#setPixelColor">setPixelColor</a></li><li data-type='method'><a href="ImageInterface.html#sync">sync</a></li></ul></li><li><a href="ResamplerInterface.html">ResamplerInterface</a><ul class='methods'><li data-type='method'><a href="ResamplerInterface.html#getResampledColor">getResampledColor</a></li><li data-type='method'><a href="ResamplerInterface.html#setImage">setImage</a></li><li data-type='method'><a href="ResamplerInterface.html#setMapper">setMapper</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="lens.html">lens</a><ul class='methods'><li data-type='method'><a href="lens.html#.distort">distort</a></li><li data-type='method'><a href="lens.html#.distort2">distort</a></li><li data-type='method'><a href="lens.html#.registerDistortionResolver">registerDistortionResolver</a></li><li data-type='method'><a href="lens.html#.unregisterDistortionResolver">unregisterDistortionResolver</a></li></ul></li><li><a href="lens.distorter.html">lens.distorter</a></li><li><a href="lens.distortion.html">lens.distortion</a></li><li><a href="lens.exception.html">lens.exception</a></li><li><a href="lens.filter.html">lens.filter</a></li><li><a href="lens.filter.filterFunctions.html">lens.filter.filterFunctions</a></li><li><a href="lens.image.html">lens.image</a></li><li><a href="lens.mixins.html">lens.mixins</a></li><li><a href="lens.resampler.html">lens.resampler</a></li><li><a href="lens.util.html">lens.util</a><ul class='methods'><li data-type='method'><a href="lens.util.html#.blendColors">blendColors</a></li><li data-type='method'><a href="lens.util.html#.deg2rad">deg2rad</a></li><li data-type='method'><a href="lens.util.html#.perceptibleReciprocal">perceptibleReciprocal</a></li><li data-type='method'><a href="lens.util.html#.rad2deg">rad2deg</a></li></ul></li><li><a href="lens.util.gaussJordanElimination.html">lens.util.gaussJordanElimination</a></li></ul><h3>Classes</h3><ul><li><a href="lens.distorter.ReversePixelMapping.html">lens.distorter.ReversePixelMapping</a><ul class='methods'><li data-type='method'><a href="lens.distorter.ReversePixelMapping.html#distort">distort</a></li><li data-type='method'><a href="lens.distorter.ReversePixelMapping.html#performDistortion">performDistortion</a></li><li data-type='method'><a href="lens.distorter.ReversePixelMapping.html#prepareViewport">prepareViewport</a></li></ul></li><li><a href="lens.distortion.Affine.html">lens.distortion.Affine</a><ul class='methods'><li data-type='method'><a href="lens.distortion.Affine.html#.fromControlPoints">fromControlPoints</a></li><li data-type='method'><a href="lens.distortion.Affine.html#.fromForwardMatrix">fromForwardMatrix</a></li><li data-type='method'><a href="lens.distortion.Affine.html#.invertAffineMatrix">invertAffineMatrix</a></li><li data-type='method'><a href="lens.distortion.Affine.html#forwardMap">forwardMap</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getValidity">getValidity</a></li><li data-type='method'><a href="lens.distortion.Affine.html#reverseMap">reverseMap</a></li></ul></li><li><a href="lens.distortion.Arc.html">lens.distortion.Arc</a><ul class='methods'><li data-type='method'><a href="lens.distortion.Arc.html#.fromArguments">fromArguments</a></li><li data-type='method'><a href="lens.distortion.Arc.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Arc.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="lens.distortion.Arc.html#getValidity">getValidity</a></li><li data-type='method'><a href="lens.distortion.Arc.html#reverseMap">reverseMap</a></li></ul></li><li><a href="lens.distortion.Perspective.html">lens.distortion.Perspective</a><ul class='methods'><li data-type='method'><a href="lens.distortion.Perspective.html#.fromControlPoints">fromControlPoints</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#.fromForwardMatrix">fromForwardMatrix</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#.invertPerspectiveMatrix">invertPerspectiveMatrix</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#forwardMap">forwardMap</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getValidity">getValidity</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#reverseMap">reverseMap</a></li></ul></li><li><a href="lens.exception.InvalidArgument.html">lens.exception.InvalidArgument</a></li><li><a href="lens.exception.InvalidArgumentsLength.html">lens.exception.InvalidArgumentsLength</a></li><li><a href="lens.exception.LensException.html">lens.exception.LensException</a></li><li><a href="lens.exception.UnsolvableMatrix.html">lens.exception.UnsolvableMatrix</a></li><li><a href="lens.filter.Filter.html">lens.filter.Filter</a><ul class='methods'><li data-type='method'><a href="lens.filter.Filter.html#filter">filter</a></li><li data-type='method'><a href="lens.filter.Filter.html#getWeight">getWeight</a></li><li data-type='method'><a href="lens.filter.Filter.html#window">window</a></li></ul></li><li><a href="lens.image.AbstractImage.html">lens.image.AbstractImage</a><ul class='methods'><li data-type='method'><a href="lens.image.AbstractImage.html#getAverageColor">getAverageColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getBlank">getBlank</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getImagePixelColor">getImagePixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getPixelColor">getPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getVirtualPixelColor">getVirtualPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getVirtualPixelColor">getVirtualPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#prepareBlank">prepareBlank</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#resize">resize</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#scale">scale</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#setImagePixelColor">setImagePixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#setPixelColor">setPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#sync">sync</a></li></ul></li><li><a href="lens.image.Canvas.html">lens.image.Canvas</a><ul class='methods'><li data-type='method'><a href="lens.image.Canvas.html#getAverageColor">getAverageColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#getImagePixelColor">getImagePixelColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#getVirtualPixelColor">getVirtualPixelColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#prepareBlank">prepareBlank</a></li><li data-type='method'><a href="lens.image.Canvas.html#resize">resize</a></li><li data-type='method'><a href="lens.image.Canvas.html#setImagePixelColor">setImagePixelColor</a></li></ul></li><li><a href="lens.image.DomImage.html">lens.image.DomImage</a><ul class='methods'><li data-type='method'><a href="lens.image.DomImage.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.DomImage.html#getVirtualPixelColor">getVirtualPixelColor</a></li></ul></li><li><a href="lens.resampler.EWA.html">lens.resampler.EWA</a><ul class='methods'><li data-type='method'><a href="lens.resampler.EWA.html#getResampledColor">getResampledColor</a></li><li data-type='method'><a href="lens.resampler.EWA.html#setImage">setImage</a></li><li data-type='method'><a href="lens.resampler.EWA.html#setMapper">setMapper</a></li></ul></li><li><a href="lens.resampler.Point.html">lens.resampler.Point</a><ul class='methods'><li data-type='method'><a href="lens.resampler.Point.html#getResampledColor">getResampledColor</a></li><li data-type='method'><a href="lens.resampler.Point.html#setImage">setImage</a></li><li data-type='method'><a href="lens.resampler.Point.html#setMapper">setMapper</a></li></ul></li><li><a href="lens.util.gaussJordanElimination.LeastSquares.html">lens.util.gaussJordanElimination.LeastSquares</a><ul class='methods'><li data-type='method'><a href="lens.util.gaussJordanElimination.LeastSquares.html#addTerms">addTerms</a></li></ul></li><li><a href="lens.util.gaussJordanElimination.Solver.html">lens.util.gaussJordanElimination.Solver</a><ul class='methods'><li data-type='method'><a href="lens.util.gaussJordanElimination.Solver.html#getVectors">getVectors</a></li><li data-type='method'><a href="lens.util.gaussJordanElimination.Solver.html#solve">solve</a></li><li data-type='method'><a href="lens.util.gaussJordanElimination.Solver.html#validate">validate</a></li></ul></li><li><a href="lens.Viewport.html">lens.Viewport</a><ul class='methods'><li data-type='method'><a href="lens.Viewport.html#area">area</a></li><li data-type='method'><a href="lens.Viewport.html#clone">clone</a></li><li data-type='method'><a href="lens.Viewport.html#contains">contains</a></li><li data-type='method'><a href="lens.Viewport.html#expand">expand</a></li><li data-type='method'><a href="lens.Viewport.html#fixBounds">fixBounds</a></li><li data-type='method'><a href="lens.Viewport.html#height">height</a></li><li data-type='method'><a href="lens.Viewport.html#offset">offset</a></li><li data-type='method'><a href="lens.Viewport.html#reset">reset</a></li><li data-type='method'><a href="lens.Viewport.html#scale">scale</a></li><li data-type='method'><a href="lens.Viewport.html#width">width</a></li></ul></li></ul><h3>Mixins</h3><ul><li><a href="lens.mixins.createsBestFitViewportFromApexes.html">lens.mixins.createsBestFitViewportFromApexes</a><ul class='methods'><li data-type='method'><a href="lens.mixins.createsBestFitViewportFromApexes.html#.getBestFitViewport">getBestFitViewport</a></li></ul></li><li><a href="lens.mixins.interpolationTrait.html">lens.mixins.interpolationTrait</a><ul class='methods'><li data-type='method'><a href="lens.mixins.interpolationTrait.html#.getInterpolatedPixelColor">getInterpolatedPixelColor</a></li></ul></li><li><a href="lens.mixins.virtualPixelTrait.html">lens.mixins.virtualPixelTrait</a><ul class='methods'><li data-type='method'><a href="lens.mixins.virtualPixelTrait.html#.getVirtualPixelColor">getVirtualPixelColor</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#Color">Color</a></li><li><a href="global.html#DistortionOptions">DistortionOptions</a></li><li><a href="global.html#Point">Point</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Perspective</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="lens.html">lens</a><a href="lens.distortion.html">.distortion</a>~</span>
+        
+        Perspective
+        </h2>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+    
+
+    <h4 class="name" id="Perspective"><span class="type-signature"></span>new Perspective<span class="signature">(reverseMatrix, denominator)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary usertext"><p>Perspective Distortion (a ratio of affine distortions).</p></p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="distortion_perspective.js.html">distortion/perspective.js</a>, <a href="distortion_perspective.js.html#line56">line 56</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="DistortionInterface.html">DistortionInterface</a></li>
+        
+    </ul></dd>
+    
+
+    
+        <dt class="mixes">Mixes In:</dt>
+
+        <dd class="mixes"><ul>
+        
+            <li><a href="lens.mixins.createsBestFitViewportFromApexes.html">lens.mixins.createsBestFitViewportFromApexes</a></li>
+        
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://www.imagemagick.org/Usage/distorts/#perspective">Perspective distortion details at ImageMagick docs</a></li>
+        
+            <li><a href="https://imagemagick.org/api/MagickCore/distort_8c_source.html#l02450">Perspective distortion at ImageMagick source</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <pre>
+
+    p(x,y)    c0*x + c1*y + c2
+u = ------ = ------------------
+    r(x,y)    c6*x + c7*y + 1
+
+    q(x,y)    c3*x + c4*y + c5
+v = ------ = ------------------
+     r(x,y)    c6*x + c7*y + 1
+
+denominator = Sign of 'r', or the denominator affine, for the actual image.
+This determines what part of the distorted image is 'ground'
+side of the horizon, the other part is 'sky' or invalid.
+Valid values are  +1.0  or  -1.0  only.
+</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>reverseMatrix</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;number></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Perspective projection matrix for reverse pixel mapping.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>denominator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Denominator for mapping validity calculation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="hasBestFitViewport"><span class="type-signature"></span>hasBestFitViewport<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="distortion-interface.js.html">distortion-interface.js</a>, <a href="distortion-interface.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="DistortionInterface.html#hasBestFitViewport">DistortionInterface#hasBestFitViewport</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Shows if distortion can generate best fit viewport.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="hasConstantPartialDerivatives"><span class="type-signature"></span>hasConstantPartialDerivatives<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="distortion-interface.js.html">distortion-interface.js</a>, <a href="distortion-interface.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="DistortionInterface.html#hasConstantPartialDerivatives">DistortionInterface#hasConstantPartialDerivatives</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Shows if distortion has constant partial derivatives, so there is
+no need to recalculate EWA ellipse for each point.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="hasPartialDerivatives"><span class="type-signature"></span>hasPartialDerivatives<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="distortion-interface.js.html">distortion-interface.js</a>, <a href="distortion-interface.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="DistortionInterface.html#hasPartialDerivatives">DistortionInterface#hasPartialDerivatives</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Shows if distortion has partial derivatives. Only distortions with partial
+derivatives can be performed using Elliptical Weighted Average resampler.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".fromControlPoints"><span class="type-signature">(static) </span>fromControlPoints<span class="signature">(controlPoints)</span><span class="type-signature"> &rarr; {<a href="lens.distortion.Perspective.html">lens.distortion.Perspective</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="distortion_perspective.js.html">distortion/perspective.js</a>, <a href="distortion_perspective.js.html#line73">line 73</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://imagemagick.org/api/MagickCore/distort_8c_source.html#l00745">Generating perspective distortion matrix from control points at ImageMagick source</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Creates perspective distortion using control points array.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>controlPoints</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;number></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Mappings of control points [u0, v0, x0, y0, ... , un, vn, xn, yn] where
+(u*, v*) are source (x, y) point and (x*, y*) are destination (x, y) point.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>New instance.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="lens.distortion.Perspective.html">lens.distortion.Perspective</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".fromForwardMatrix"><span class="type-signature">(static) </span>fromForwardMatrix<span class="signature">(matrix)</span><span class="type-signature"> &rarr; {<a href="lens.distortion.Perspective.html">lens.distortion.Perspective</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="distortion_perspective.js.html">distortion/perspective.js</a>, <a href="distortion_perspective.js.html#line115">line 115</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://imagemagick.org/api/MagickCore/distort_8c_source.html#l00853">Generating inverted perspective distortion matrix from forward perspective matrix at ImageMagick docs</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Creates perspective distortion using perspective matrix.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>matrix</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;number></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Perspective matrix.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="lens.distortion.Perspective.html">lens.distortion.Perspective</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".invertPerspectiveMatrix"><span class="type-signature">(static) </span>invertPerspectiveMatrix<span class="signature">(matrix)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="distortion_perspective.js.html">distortion/perspective.js</a>, <a href="distortion_perspective.js.html#line137">line 137</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://imagemagick.org/api/MagickCore/distort_8c_source.html#l00109">Inverting perspective matrix at ImageMagick source</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Creates inverted perspective matrix from perspective matrix.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>matrix</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;number></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Perspective matrix.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Inverted perspective matrix.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;number></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="forwardMap"><span class="type-signature"></span>forwardMap<span class="signature">(u, v)</span><span class="type-signature"> &rarr; {<a href="global.html#Point">Point</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="distortion_perspective.js.html">distortion/perspective.js</a>, <a href="distortion_perspective.js.html#line204">line 204</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Maps source coords into destination coords.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>u</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>X-coordinate of source image point.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>v</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Y-coordinate of source image point.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Forward mapped destination image coords.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#Point">Point</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getBestFitViewport"><span class="type-signature"></span>getBestFitViewport<span class="signature">(viewport)</span><span class="type-signature"> &rarr; {<a href="lens.Viewport.html">lens.Viewport</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mixins_creates-bestfit-viewport-from-apexes.js.html">mixins/creates-bestfit-viewport-from-apexes.js</a>, <a href="mixins_creates-bestfit-viewport-from-apexes.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="DistortionInterface.html#getBestFitViewport">DistortionInterface#getBestFitViewport</a></li>
+        
+    </ul></dd>
+    
+
+    
+        <dt class="mixes">Mixes In:</dt>
+
+        <dd class="mixes"><ul>
+        
+            <li><a href="lens.mixins.createsBestFitViewportFromApexes.html#.getBestFitViewport">lens.mixins.createsBestFitViewportFromApexes.getBestFitViewport</a></li>
+        
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Returns best fit viewport for distortion, using forward mapping for image apexes (corners).</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>viewport</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="lens.Viewport.html">lens.Viewport</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="lens.Viewport.html">lens.Viewport</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getBestFitViewport"><span class="type-signature"></span>getBestFitViewport<span class="signature">(viewport)</span><span class="type-signature"> &rarr; {<a href="lens.Viewport.html">lens.Viewport</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mixins_creates-bestfit-viewport-from-apexes.js.html">mixins/creates-bestfit-viewport-from-apexes.js</a>, <a href="mixins_creates-bestfit-viewport-from-apexes.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="DistortionInterface.html#getBestFitViewport">DistortionInterface#getBestFitViewport</a></li>
+        
+    </ul></dd>
+    
+
+    
+        <dt class="mixes">Mixes In:</dt>
+
+        <dd class="mixes"><ul>
+        
+            <li><a href="lens.mixins.createsBestFitViewportFromApexes.html#.getBestFitViewport">lens.mixins.createsBestFitViewportFromApexes.getBestFitViewport</a></li>
+        
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Returns best fit viewport for distortion, using forward mapping for image apexes (corners).</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>viewport</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="lens.Viewport.html">lens.Viewport</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="lens.Viewport.html">lens.Viewport</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getPartialDerivatives"><span class="type-signature"></span>getPartialDerivatives<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="distortion-interface.js.html">distortion-interface.js</a>, <a href="distortion-interface.js.html#line63">line 63</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="DistortionInterface.html#getPartialDerivatives">DistortionInterface#getPartialDerivatives</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Returns partial derivatives for given (x, y) for scaling ellipse in EWA.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Four partial derivatives: dux, duy, dvx, dvy</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;number></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getValidity"><span class="type-signature"></span>getValidity<span class="signature">(x, y, scaling)</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="distortion-interface.js.html">distortion-interface.js</a>, <a href="distortion-interface.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="DistortionInterface.html#getValidity">DistortionInterface#getValidity</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Returns number that represents how mathematically valid is mapping. If validity is &lt; 0 -- the mapping is invalid</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>scaling</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="reverseMap"><span class="type-signature"></span>reverseMap<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {<a href="global.html#Point">Point</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="distortion-interface.js.html">distortion-interface.js</a>, <a href="distortion-interface.js.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="DistortionInterface.html#reverseMap">DistortionInterface#reverseMap</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Maps destination coordinates into source coordinates</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Source coordinates pair</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#Point">Point</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Feb 20 2020 03:43:19 GMT+0200 (GMT+02:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

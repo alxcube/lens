@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Filter - Lens JS docs</title>
+    
+    <meta name="description" content="Pure javascript library for high quality image transforms like affine, perspective, arc using algorithms from ImageMagick and incorporates reverse pixel mapping technique and elliptical weighted average area re-sampling. Works in browsers and in Node.js." />
+    
+        <meta name="keywords" content="lens, javascript, image distortion, image transform, affine, perspective, arc image, reverse pixel mapping, elliptical weighted average, re-sampling, super-sampling" />
+        <meta name="keyword" content="lens, javascript, image distortion, image transform, affine, perspective, arc image, reverse pixel mapping, elliptical weighted average, re-sampling, super-sampling" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="../" target="_blank" class="menu-item" >Project Home</a></h2><h2><a href="../#/playground" target="_blank" class="menu-item" >Playground</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-01.00.quick-start.html">Quick Start</a></li><li><a href="tutorial-02.00.basic-concepts.html">Basic concepts</a></li><li><a href="tutorial-03.00.distortions.html">Distortions</a></li></ul><h3>Interfaces</h3><ul><li><a href="DistortionInterface.html">DistortionInterface</a><ul class='methods'><li data-type='method'><a href="DistortionInterface.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="DistortionInterface.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="DistortionInterface.html#getValidity">getValidity</a></li><li data-type='method'><a href="DistortionInterface.html#reverseMap">reverseMap</a></li></ul></li><li><a href="FilterInterface.html">FilterInterface</a><ul class='methods'><li data-type='method'><a href="FilterInterface.html#filter">filter</a></li><li data-type='method'><a href="FilterInterface.html#getWeight">getWeight</a></li><li data-type='method'><a href="FilterInterface.html#window">window</a></li></ul></li><li><a href="ImageInterface.html">ImageInterface</a><ul class='methods'><li data-type='method'><a href="ImageInterface.html#getAverageColor">getAverageColor</a></li><li data-type='method'><a href="ImageInterface.html#getBlank">getBlank</a></li><li data-type='method'><a href="ImageInterface.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="ImageInterface.html#getPixelColor">getPixelColor</a></li><li data-type='method'><a href="ImageInterface.html#scale">scale</a></li><li data-type='method'><a href="ImageInterface.html#setPixelColor">setPixelColor</a></li><li data-type='method'><a href="ImageInterface.html#sync">sync</a></li></ul></li><li><a href="ResamplerInterface.html">ResamplerInterface</a><ul class='methods'><li data-type='method'><a href="ResamplerInterface.html#getResampledColor">getResampledColor</a></li><li data-type='method'><a href="ResamplerInterface.html#setImage">setImage</a></li><li data-type='method'><a href="ResamplerInterface.html#setMapper">setMapper</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="lens.html">lens</a><ul class='methods'><li data-type='method'><a href="lens.html#.distort">distort</a></li><li data-type='method'><a href="lens.html#.distort2">distort</a></li><li data-type='method'><a href="lens.html#.registerDistortionResolver">registerDistortionResolver</a></li><li data-type='method'><a href="lens.html#.unregisterDistortionResolver">unregisterDistortionResolver</a></li></ul></li><li><a href="lens.distorter.html">lens.distorter</a></li><li><a href="lens.distortion.html">lens.distortion</a></li><li><a href="lens.exception.html">lens.exception</a></li><li><a href="lens.filter.html">lens.filter</a></li><li><a href="lens.filter.filterFunctions.html">lens.filter.filterFunctions</a></li><li><a href="lens.image.html">lens.image</a></li><li><a href="lens.mixins.html">lens.mixins</a></li><li><a href="lens.resampler.html">lens.resampler</a></li><li><a href="lens.util.html">lens.util</a><ul class='methods'><li data-type='method'><a href="lens.util.html#.blendColors">blendColors</a></li><li data-type='method'><a href="lens.util.html#.deg2rad">deg2rad</a></li><li data-type='method'><a href="lens.util.html#.perceptibleReciprocal">perceptibleReciprocal</a></li><li data-type='method'><a href="lens.util.html#.rad2deg">rad2deg</a></li></ul></li><li><a href="lens.util.gaussJordanElimination.html">lens.util.gaussJordanElimination</a></li></ul><h3>Classes</h3><ul><li><a href="lens.distorter.ReversePixelMapping.html">lens.distorter.ReversePixelMapping</a><ul class='methods'><li data-type='method'><a href="lens.distorter.ReversePixelMapping.html#distort">distort</a></li><li data-type='method'><a href="lens.distorter.ReversePixelMapping.html#performDistortion">performDistortion</a></li><li data-type='method'><a href="lens.distorter.ReversePixelMapping.html#prepareViewport">prepareViewport</a></li></ul></li><li><a href="lens.distortion.Affine.html">lens.distortion.Affine</a><ul class='methods'><li data-type='method'><a href="lens.distortion.Affine.html#.fromControlPoints">fromControlPoints</a></li><li data-type='method'><a href="lens.distortion.Affine.html#.fromForwardMatrix">fromForwardMatrix</a></li><li data-type='method'><a href="lens.distortion.Affine.html#.invertAffineMatrix">invertAffineMatrix</a></li><li data-type='method'><a href="lens.distortion.Affine.html#forwardMap">forwardMap</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="lens.distortion.Affine.html#getValidity">getValidity</a></li><li data-type='method'><a href="lens.distortion.Affine.html#reverseMap">reverseMap</a></li></ul></li><li><a href="lens.distortion.Arc.html">lens.distortion.Arc</a><ul class='methods'><li data-type='method'><a href="lens.distortion.Arc.html#.fromArguments">fromArguments</a></li><li data-type='method'><a href="lens.distortion.Arc.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Arc.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="lens.distortion.Arc.html#getValidity">getValidity</a></li><li data-type='method'><a href="lens.distortion.Arc.html#reverseMap">reverseMap</a></li></ul></li><li><a href="lens.distortion.Perspective.html">lens.distortion.Perspective</a><ul class='methods'><li data-type='method'><a href="lens.distortion.Perspective.html#.fromControlPoints">fromControlPoints</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#.fromForwardMatrix">fromForwardMatrix</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#.invertPerspectiveMatrix">invertPerspectiveMatrix</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#forwardMap">forwardMap</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getBestFitViewport">getBestFitViewport</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getPartialDerivatives">getPartialDerivatives</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#getValidity">getValidity</a></li><li data-type='method'><a href="lens.distortion.Perspective.html#reverseMap">reverseMap</a></li></ul></li><li><a href="lens.exception.InvalidArgument.html">lens.exception.InvalidArgument</a></li><li><a href="lens.exception.InvalidArgumentsLength.html">lens.exception.InvalidArgumentsLength</a></li><li><a href="lens.exception.LensException.html">lens.exception.LensException</a></li><li><a href="lens.exception.UnsolvableMatrix.html">lens.exception.UnsolvableMatrix</a></li><li><a href="lens.filter.Filter.html">lens.filter.Filter</a><ul class='methods'><li data-type='method'><a href="lens.filter.Filter.html#filter">filter</a></li><li data-type='method'><a href="lens.filter.Filter.html#getWeight">getWeight</a></li><li data-type='method'><a href="lens.filter.Filter.html#window">window</a></li></ul></li><li><a href="lens.image.AbstractImage.html">lens.image.AbstractImage</a><ul class='methods'><li data-type='method'><a href="lens.image.AbstractImage.html#getAverageColor">getAverageColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getBlank">getBlank</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getImagePixelColor">getImagePixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getPixelColor">getPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getVirtualPixelColor">getVirtualPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#getVirtualPixelColor">getVirtualPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#prepareBlank">prepareBlank</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#resize">resize</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#scale">scale</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#setImagePixelColor">setImagePixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#setPixelColor">setPixelColor</a></li><li data-type='method'><a href="lens.image.AbstractImage.html#sync">sync</a></li></ul></li><li><a href="lens.image.Canvas.html">lens.image.Canvas</a><ul class='methods'><li data-type='method'><a href="lens.image.Canvas.html#getAverageColor">getAverageColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#getImagePixelColor">getImagePixelColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#getVirtualPixelColor">getVirtualPixelColor</a></li><li data-type='method'><a href="lens.image.Canvas.html#prepareBlank">prepareBlank</a></li><li data-type='method'><a href="lens.image.Canvas.html#resize">resize</a></li><li data-type='method'><a href="lens.image.Canvas.html#setImagePixelColor">setImagePixelColor</a></li></ul></li><li><a href="lens.image.DomImage.html">lens.image.DomImage</a><ul class='methods'><li data-type='method'><a href="lens.image.DomImage.html#getInterpolatedPixelColor">getInterpolatedPixelColor</a></li><li data-type='method'><a href="lens.image.DomImage.html#getVirtualPixelColor">getVirtualPixelColor</a></li></ul></li><li><a href="lens.resampler.EWA.html">lens.resampler.EWA</a><ul class='methods'><li data-type='method'><a href="lens.resampler.EWA.html#getResampledColor">getResampledColor</a></li><li data-type='method'><a href="lens.resampler.EWA.html#setImage">setImage</a></li><li data-type='method'><a href="lens.resampler.EWA.html#setMapper">setMapper</a></li></ul></li><li><a href="lens.resampler.Point.html">lens.resampler.Point</a><ul class='methods'><li data-type='method'><a href="lens.resampler.Point.html#getResampledColor">getResampledColor</a></li><li data-type='method'><a href="lens.resampler.Point.html#setImage">setImage</a></li><li data-type='method'><a href="lens.resampler.Point.html#setMapper">setMapper</a></li></ul></li><li><a href="lens.util.gaussJordanElimination.LeastSquares.html">lens.util.gaussJordanElimination.LeastSquares</a><ul class='methods'><li data-type='method'><a href="lens.util.gaussJordanElimination.LeastSquares.html#addTerms">addTerms</a></li></ul></li><li><a href="lens.util.gaussJordanElimination.Solver.html">lens.util.gaussJordanElimination.Solver</a><ul class='methods'><li data-type='method'><a href="lens.util.gaussJordanElimination.Solver.html#getVectors">getVectors</a></li><li data-type='method'><a href="lens.util.gaussJordanElimination.Solver.html#solve">solve</a></li><li data-type='method'><a href="lens.util.gaussJordanElimination.Solver.html#validate">validate</a></li></ul></li><li><a href="lens.Viewport.html">lens.Viewport</a><ul class='methods'><li data-type='method'><a href="lens.Viewport.html#area">area</a></li><li data-type='method'><a href="lens.Viewport.html#clone">clone</a></li><li data-type='method'><a href="lens.Viewport.html#contains">contains</a></li><li data-type='method'><a href="lens.Viewport.html#expand">expand</a></li><li data-type='method'><a href="lens.Viewport.html#fixBounds">fixBounds</a></li><li data-type='method'><a href="lens.Viewport.html#height">height</a></li><li data-type='method'><a href="lens.Viewport.html#offset">offset</a></li><li data-type='method'><a href="lens.Viewport.html#reset">reset</a></li><li data-type='method'><a href="lens.Viewport.html#scale">scale</a></li><li data-type='method'><a href="lens.Viewport.html#width">width</a></li></ul></li></ul><h3>Mixins</h3><ul><li><a href="lens.mixins.createsBestFitViewportFromApexes.html">lens.mixins.createsBestFitViewportFromApexes</a><ul class='methods'><li data-type='method'><a href="lens.mixins.createsBestFitViewportFromApexes.html#.getBestFitViewport">getBestFitViewport</a></li></ul></li><li><a href="lens.mixins.interpolationTrait.html">lens.mixins.interpolationTrait</a><ul class='methods'><li data-type='method'><a href="lens.mixins.interpolationTrait.html#.getInterpolatedPixelColor">getInterpolatedPixelColor</a></li></ul></li><li><a href="lens.mixins.virtualPixelTrait.html">lens.mixins.virtualPixelTrait</a><ul class='methods'><li data-type='method'><a href="lens.mixins.virtualPixelTrait.html#.getVirtualPixelColor">getVirtualPixelColor</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#Color">Color</a></li><li><a href="global.html#DistortionOptions">DistortionOptions</a></li><li><a href="global.html#Point">Point</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Filter</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="lens.html">lens</a><a href="lens.filter.html">.filter</a>~</span>
+        
+        Filter
+        </h2>
+        
+            <div class="class-description usertext"><p>Resample filter.</p></div>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Filter"><span class="type-signature"></span>new Filter<span class="signature">(filterFunction, windowingFunction, support, scale, blur<span class="signature-attributes">opt</span>, windowSupport<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="filter_filter.js.html">filter/filter.js</a>, <a href="filter_filter.js.html#line35">line 35</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="FilterInterface.html">FilterInterface</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-tutorial">Tutorials:</dt>
+    <dd class="tag-tutorial">
+        <ul>
+            <li><a href="tutorial-02.03.pixel-color-lookup.html">Pixel Color Lookup</a></li>
+        </ul>
+    </dd>
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://www.imagemagick.org/Usage/filter/#filter">Resampling Filters</a> at ImageMagick docs</li>
+        
+            <li><a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/1989/CSD-89-516.pdf">Fundamentals of Texture Mapping and Image Warping by Paul S. Heckbert</a>page 41, section 3.4, 3.5</li>
+        
+            <li><a href="https://imagemagick.org/api/MagickCore/resize_8c_source.html#l00757">AquireResizeFilter at ImageMagick source</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filterFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="lens.filter.Filter.html#~filterFunction">lens.filter.Filter~filterFunction</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Filtering function.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>windowingFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="lens.filter.Filter.html#~filterFunction">lens.filter.Filter~filterFunction</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Windowing function.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>support</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Filter region of support - the filter support limit.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>scale</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Dimension scaling to fit window support (usally 1.0).</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>blur</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>1</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>X-scale (blur-sharpen).</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>windowSupport</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">null</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>null</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Window support, usually equal to support (expert only).</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="blur"><span class="type-signature"></span>blur<span class="type-signature"> :number</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="filter-interface.js.html">filter-interface.js</a>, <a href="filter-interface.js.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="FilterInterface.html#blur">FilterInterface#blur</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>X-scale (blur-sharpen).</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="scale"><span class="type-signature"></span>scale<span class="type-signature"> :number</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="filter-interface.js.html">filter-interface.js</a>, <a href="filter-interface.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="FilterInterface.html#scale">FilterInterface#scale</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Dimension scaling to fit window support (usally 1.0).</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="support"><span class="type-signature"></span>support<span class="type-signature"> :number</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="filter-interface.js.html">filter-interface.js</a>, <a href="filter-interface.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="FilterInterface.html#support">FilterInterface#support</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Filter region of support - the filter support limit.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="windowSupport"><span class="type-signature"></span>windowSupport<span class="type-signature"> :number</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="filter-interface.js.html">filter-interface.js</a>, <a href="filter-interface.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="FilterInterface.html#windowSupport">FilterInterface#windowSupport</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Window support, usually equal to support (expert only).</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="filter"><span class="type-signature"></span>filter<span class="signature">(x)</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="filter-interface.js.html">filter-interface.js</a>, <a href="filter-interface.js.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="FilterInterface.html#filter">FilterInterface#filter</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getWeight"><span class="type-signature"></span>getWeight<span class="signature">(x)</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="filter-interface.js.html">filter-interface.js</a>, <a href="filter-interface.js.html#line35">line 35</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="FilterInterface.html#getWeight">FilterInterface#getWeight</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="window"><span class="type-signature"></span>window<span class="signature">(x)</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="filter-interface.js.html">filter-interface.js</a>, <a href="filter-interface.js.html#line49">line 49</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="FilterInterface.html#window">FilterInterface#window</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+
+    
+
+    <h4 class="name" id="~filterFunction"><span class="type-signature"></span>filterFunction<span class="signature">(x<span class="signature-attributes">opt</span>, support<span class="signature-attributes">opt</span>, windowSupport<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="filter_filter.js.html">filter/filter.js</a>, <a href="filter_filter.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Internal filter or windowing function.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>support</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>windowSupport</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+            
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Feb 20 2020 03:43:19 GMT+0200 (GMT+02:00) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
