@@ -21,13 +21,13 @@
     "super-sampling"
   ],
   "author": "Alexander Alexandrov <alxcube@gmail.com>",
-  "homepage": "https://alxcube.github.io/lens-js",
+  "homepage": "https://alxcube.github.io/lens",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alxcube/lens-js.git"
+    "url": "https://github.com/alxcube/lens.git"
   },
   "bugs": {
-    "url": "https://github.com/alxcube/lens-js/issues"
+    "url": "https://github.com/alxcube/lens/issues"
   },
   "license": "Apache-2.0",
   "devDependencies": {

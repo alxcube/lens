@@ -4,7 +4,7 @@
 
 Lens is pure javascript library for image distortions using algorithms taken from [ImageMagick](https://imagemagick.org).
 
-It can be uses in all browsers that support HTML5 canvas and in Node.js. While browsers usage supported out of the box,
+It can be used in all browsers that support HTML5 canvas and in Node.js. While browsers usage supported out of the box,
 you will need some third party library that provides pixel manipulation to use Lens in Node.
 
 If you are familiar with ImageMagick distortions, it will be very easy for you to use Lens.
