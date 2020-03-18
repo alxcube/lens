@@ -1,11 +1,13 @@
 {
   "name": "@alxcube/lens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pure javascript library for high quality image transforms like affine, perspective, arc using algorithms from ImageMagick and incorporates reverse pixel mapping technique and elliptical",
   "main": "dist/lens.min.js",
   "scripts": {
     "build": "webpack --config=webpack.config.js --progress --hide-modules",
     "build:min": "webpack --config=webpack.config.js --progress --hide-modules --env.minify",
+    "build:all": "npm run build && npm run build:min",
+    "prod:patch": "npm version patch && npm run build:all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
