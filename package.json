@@ -1,7 +1,7 @@
 {
   "name": "@alxcube/lens",
-  "version": "0.1.1",
-  "description": "Pure javascript library for high quality image transforms like affine, perspective, arc using algorithms from ImageMagick and incorporates reverse pixel mapping technique and elliptical",
+  "version": "0.1.0",
+  "description": "Pure javascript library for high quality image transforms like affine, perspective, arc using algorithms from ImageMagick and incorporates reverse pixel mapping technique and elliptical weighted average resampling.",
   "main": "dist/lens.min.js",
   "scripts": {
     "build": "webpack --config=webpack.config.js --progress --hide-modules",
@@ -21,8 +21,8 @@
     "canvas",
     "reverse pixel mapping",
     "elliptical weighted average",
-    "re-sampling",
-    "super-sampling"
+    "resampling",
+    "supersampling"
   ],
   "author": "Alexander Alexandrov <alxcube@gmail.com>",
   "homepage": "https://alxcube.github.io/lens",
