@@ -1,6 +1,6 @@
 {
   "name": "@alxcube/lens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pure javascript library for high quality image transforms like affine, perspective, arc using algorithms from ImageMagick and incorporates reverse pixel mapping technique and elliptical",
   "main": "dist/lens.min.js",
   "scripts": {
