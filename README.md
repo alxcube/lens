@@ -37,6 +37,11 @@ object. However, Lens uses some ES2015 features that you may need to polyfill:
 
 There also may be some limitations on image size depending on browser.
 
+## Node.js
+
+To use Lens in Node.js you need some image processing library.
+You can use [Jimp](https://www.npmjs.com/package/jimp) with [Lens Jimp adapter](https://www.npmjs.com/package/@alxcube/lens-jimp).
+
 ## Semver
 
 Lens have no tests specified at the moment, so it stays at version 0.
